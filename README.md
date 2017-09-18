@@ -1,1 +1,1 @@
-# lpc2_g1
+# Projeto de LPC para criação de calendário e agendas
