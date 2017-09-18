@@ -22,5 +22,3 @@ class Agenda(models.Model):
     )
     tipo=models.CharField(max_length=7, choices=tipos)
     compromissos = models.ManyToManyField(Compromisso, verbose_name="compromissos")
-    def __str__(self):
-        return "{} - {}".format(self.usuario.nome,self.tipo)
