@@ -19,5 +19,6 @@ from agenda.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^agendas/$', listaAgenda),
-    url(r'^agendas/usuario/(?P<id>[0-9]{1})/', get_agenda_byID)
+    url(r'^agendas/usuario/(?P<id>[0-9]{1})/', get_agenda_byID),
+    url(r'^agendas/feriados/$', listaFeriado)
 ]

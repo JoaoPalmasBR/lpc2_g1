@@ -27,4 +27,15 @@ def get_agenda_byID(request,id):
                 retorno += '<li>{}, {}</li>'.format(c.nome, c.data)
             retorno += '</ul></p><hr>'
     return HttpResponse(retorno)
-    
+
+def listaFeriado(request):
+    lista = AgendaInstitucional.objects.all()
+    retorno=''
+    for ai in lista:
+        retorno += '<p>Agenda Institucional: </p>'
+        lista2 = ai.feriados.all()
+        retorno += '<p>Feriados: <ul>'
+        for c in lista2:
+            retorno += '<li>{}, {}</li>'.format(c.nome, c.data)
+        retorno += '</ul></p><hr>'
+    return HttpResponse(retorno)

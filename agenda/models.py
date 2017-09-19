@@ -5,15 +5,13 @@ class Usuario(models.Model):
     nome = models.CharField(max_length=128)
     def __str__(self):
         return "{}".format(self.nome)
-class Feriado(models.Model):
-    data = models.DateField(blank=True, null=True)
-class AgendaInstitucional(models.Model):
-    feriados = models.ManyToManyField(Feriado, verbose_name="feriados")
 class Compromisso(models.Model):
     nome = models.CharField(max_length=128, null=True, blank=False)
     data = models.DateField(blank=True, null=True)
     def __str__(self):
         return "{} - {}".format(self.nome,self.data)
+class AgendaInstitucional(models.Model):
+    feriados = models.ManyToManyField(Compromisso)
 class Agenda(models.Model):
     usuario = models.ForeignKey(Usuario, null=True, blank=False)
     tipos = (
