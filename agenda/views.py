@@ -1,8 +1,24 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from agenda.models import *
+from rest_framework import routers, serializers, viewsets
+from django.contrib.auth.models import User
+from agenda.serializers import *
 
+#ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
+
+class AgendaViewSet(viewsets.ModelViewSet):
+    queryset = Agenda.objects.all()
+    serializer_class = AgendaSerializer
 # Create your views here.
+'''
 def listaAgenda(request):
     lista = Agenda.objects.all()
     retorno=''
@@ -28,7 +44,7 @@ def get_agenda_byID(request,id):
             retorno += '</ul></p><hr>'
     return HttpResponse(retorno)
 
-'''
+
 def listaFeriado(request):
     lista = AgendaInstitucional.objects.all()
     retorno=''
