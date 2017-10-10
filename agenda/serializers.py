@@ -13,6 +13,8 @@ class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('nome',)
 
 class AgendaSerializer(serializers.HyperlinkedModelSerializer):
+    usuario = UsuarioSerializer(many=False)
+    permitidos = UsuarioSerializer(many=True)
     class Meta:
         model = Agenda
         fields = ('usuario','institucional','tipo','permitidos')
